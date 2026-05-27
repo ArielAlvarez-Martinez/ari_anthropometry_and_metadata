@@ -1,6 +1,10 @@
 # ARI Anthropometry and Metadata
 
-This repository stores two CSV files derived from the official ARI HRTF database anthropometry file. They are prepared for the subject naming and resource loading conventions used by [`hrtfpykit`](https://github.com/ArielAlvarez-Martinez/hrtfpykit), especially `hrtfpykit.datasets.ARI`.
+This repository stores two CSV files derived from the official ARI HRTF database `anthro.mat` MATLAB file. They are prepared for the subject naming and resource loading conventions used by [`hrtfpykit`](https://github.com/ArielAlvarez-Martinez/hrtfpykit), especially `hrtfpykit.datasets.ARI`.
+
+The original `anthro.mat` file contains both anthropometric measurements and subject information. In hrtfpykit these are handled as separate dataset resources. `AnthropometrySpec` is used for numeric body and ear measurements that can become model inputs, analysis variables, or conditioning data. `MetadataSpec` is used for subject information such as sex, age, weight, and recording dates.
+
+Splitting the MATLAB file into `anthro.csv` and `metadata.csv` keeps those two concepts explicit while preserving the same subject alignment. Both CSV files use one subject per row and the same `SubjectID` format, so an ARI dataset workflow can request anthropometry and metadata independently while still matching them to the same HRTF subjects.
 
 Source data:
 
